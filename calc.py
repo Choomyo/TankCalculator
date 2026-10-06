@@ -25,8 +25,20 @@ def attack_table(your_level, your_defense, your_dodge, your_parry, your_block, m
     results["hit"] = max(0, chance_left)
     return results
 
+def armour_reduction(your_armour, mob_level):
+    if mob_level < 60:
+        divider = your_armour + 400 + 85 * mob_level
+    else:
+        divider = your_armour +467.5 * mob_level - 22167.5 #this will never get used for wow forever as 60 will be perma cap
+    return min(75.0, 100 * your_armour / divider)
+
+def avg_damage(results, mob_hit, armour_pct, block_value):
+    hit_after_armour = mob_hit * (1 - armour_pct / 100) #opne normal hit after armour
+    return (results["hit"] * hit_after_armour + results["crit"] * 2 * hit_after_armour + results["crush"] + results["block"] * max(0, hit_after_armour - block_value)) / 100
+
+
 if __name__ == "__main__":
-    results = attack_table(24, 128, 5.7, 5.3, 6, 27) #your level, your defense, your dodge, your parry, your block, mob level
+    results = attack_table(24, 128, 5.7, 5.3, 6, 30) #your level, your defense, your dodge, your parry, your block, mob level
     for outcome, chance in results.items():
         print(f"{outcome:<6} {chance:5.1f}%")
 
