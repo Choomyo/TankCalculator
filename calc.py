@@ -26,7 +26,7 @@ def attack_table(your_level, your_defense, your_dodge, your_parry, your_block, m
     return results
 
 if __name__ == "__main__":
-    results = attack_table(24, 128, 5.7, 5.3, 6, 24) #your level, your defense, your dodge, your parry, your block, mob level
+    results = attack_table(24, 128, 5.7, 5.3, 6, 27) #your level, your defense, your dodge, your parry, your block, mob level
     for outcome, chance in results.items():
         print(f"{outcome:<6} {chance:5.1f}%")
 
