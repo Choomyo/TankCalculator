@@ -37,11 +37,16 @@ def avg_damage(results, mob_hit, armour_pct, block_value):
     return (results["hit"] * hit_after_armour + results["crit"] * 2 * hit_after_armour + results["crush"] + results["block"] * max(0, hit_after_armour - block_value)) / 100
 
 
-if __name__ == "__main__":
-    results = attack_table(24, 128, 5.7, 5.3, 6, 30) #your level, your defense, your dodge, your parry, your block, mob level
+def main():
+    results = attack_table(24, 128, 5.7, 5.3, 6, 30)  # your level, your defense, your dodge, your parry, your block, mob level
     for outcome, chance in results.items():
         print(f"{outcome:<6} {chance:5.1f}%")
-armour_pct = armour_reduction(1800, 30)
-print(f"Armour reductions: {armour_pct:.1f}:.1f%")
-print(f"Average Damage: {avg_damage(results, 100, armour_pct, 0):.1f}")
+
+    armour_pct = armour_reduction(1800, 30)
+    print(f"Armour reduction: {armour_pct:.1f}")
+    print(f"Average Damage: {avg_damage(results, 100, armour_pct, 0):.1f}")
+
+
+if __name__ == "__main__":
+    main()
 
