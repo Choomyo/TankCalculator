@@ -38,13 +38,13 @@ def avg_damage(results, mob_hit, armour_pct, block_value):
 
 
 def main():
-    results = attack_table(24, 128, 5.7, 5.3, 6, 30)  # your level, your defense, your dodge, your parry, your block, mob level
+    results = attack_table(28, 130, 5, 5, 6, 30)  # your level, your defense, your dodge, your parry, your block, mob level
     for outcome, chance in results.items():
-        print(f"{outcome:<6} {chance:5.1f}%")
+        print(f"{outcome:<20} {chance:5.1f}%")
 
     armour_pct = armour_reduction(1800, 30)
-    print(f"Armour reduction: {armour_pct:.1f}")
-    print(f"Average Damage: {avg_damage(results, 100, armour_pct, 0):.1f}")
+    print(f"Armour reduction:{"":<5}{armour_pct:.1f}")
+    print(f"Average Damage:{"":<7}{avg_damage(results, 100, armour_pct, 0):.1f}")
 
 
 if __name__ == "__main__":
