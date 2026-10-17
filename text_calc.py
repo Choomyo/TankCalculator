@@ -32,3 +32,4 @@ for outcome in results:
 print(f"-" * 30)
 armour_reduction = armour_reduction(mob_level=mob_level, your_armour=your_armour)
 print(f"Your armour reduction against a level {mob_level} is {armour_reduction:.1f}")
+print(f"-" * 30)
